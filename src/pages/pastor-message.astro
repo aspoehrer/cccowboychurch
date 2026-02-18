@@ -1,0 +1,206 @@
+---
+// Pastor's Message Page - Full message from Pastor Mark Grimes
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Message From the Pastor" description="A message of hope and fresh starts from Pastor Mark Grimes">
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container text-center">
+      <h1>Message From the Pastor</h1>
+      <p class="lead">A Message of Hope and Fresh Starts</p>
+    </div>
+  </section>
+
+  <!-- Pastor's Welcome -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      
+      <div class="pastor-welcome-container">
+        <div class="pastor-photo-section">
+          <img 
+            src="/images/about/pastor-mark-preaching.jpg" 
+            alt="Pastor Mark Grimes preaching at Caney Creek Cowboy Church" 
+            class="pastor-welcome-photo"
+            loading="lazy"
+          />
+        </div>
+        <div class="pastor-message">
+          <h3 class="pastor-title">"Feeling like you've blown it?"</h3>
+          <p>
+            Reached the point of no return? That your life hasn't gone as planned? If so, you are not alone.
+          </p>
+          <p>
+            We all know what it feels like to have life disappoint us and not work out as we'd hoped. We all know what it's like to long for something different, something better, and something more.
+          </p>
+          <p>
+            Drawing on his own experiences and pivotal Bible stories, Pastor Mark Grimes shows how God is all about comebacks.
+          </p>
+          <p>
+            Samson had blown it repeatedly; nevertheless, he experiences tremendous triumph at the end of his life. The prodigal son, as Jesus describes him, returns home in disgrace only to be welcomed by his Father with open arms- no questions asked. The list goes on: Joseph, Moses, and Peter all experienced comebacks. Jesus himself performed the greatest comeback of all by rising from the dead.
+          </p>
+          <p>
+            God is in the business of giving fresh starts to people. He gives hope to the hopeless. Direction to the directionless. Help to those who need help. God is always good, all the time, and His plans will always prevail, even when our plans don't. He already knows what the solutions are.
+          </p>
+          <p>
+            No matter what kind of disappointment or grief or pain or trouble or heartache we encounter, God always offers a new beginning, a change of heart, and a powerful spiritual turnaround.
+          </p>
+          <p>
+            Please come as you are to Caney Creek Cowboy Church &amp; leave changed- we believe it's not so important how we start as it is to how we finish...
+          </p>
+          <p class="text-right pastor-signature">
+            <strong>Pastor Mark Grimes</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Message -->
+  <section class="section section-light">
+    <div class="container-narrow">
+      <h2 class="text-center">Our Message</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <div class="core-message">
+        <p class="lead">
+          Preaching and Teaching straight from the Bible. It's not about the building. It's about a body of believers in Christ! It's not about a religion. It's about your relationship with Jesus Christ!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h2>Join Us This Sunday</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead">
+        Come as you are and experience the transformative power of God's love.
+      </p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary">Plan Your Visit</a>
+        <a href="/about" class="btn btn-secondary">Learn More About Us</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: var(--color-white);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .page-header .lead {
+    color: var(--color-accent);
+    font-size: 1.3rem;
+  }
+
+  /* Pastor's Welcome */
+  .pastor-title {
+    color: var(--color-accent);
+    font-style: italic;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+  }
+
+  .pastor-signature {
+    font-style: italic;
+    margin-top: var(--spacing-md);
+    color: var(--color-primary);
+  }
+
+  .pastor-welcome-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+    margin-top: var(--spacing-lg);
+  }
+
+  .pastor-photo-section {
+    position: relative;
+  }
+
+  .pastor-welcome-photo {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+  }
+
+  .pastor-message {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .pastor-message p {
+    line-height: 1.8;
+  }
+
+  /* Core Message */
+  .core-message {
+    background-color: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-accent);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .core-message .lead {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    line-height: 1.8;
+  }
+
+  /* Call to Action */
+  .cta-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin-top: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .cta-actions .btn {
+    min-width: 180px;
+  }
+
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2rem;
+    }
+
+    .pastor-welcome-container {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .pastor-photo-section {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .cta-actions .btn {
+      min-width: 150px;
+    }
+  }
+</style>
