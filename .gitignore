@@ -20,3 +20,6 @@ pnpm-debug.log*
 
 # jetbrains setting folders
 .idea/
+
+# Decap CMS
+.netlify/

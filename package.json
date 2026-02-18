@@ -14,10 +14,13 @@
     "type": "git",
     "url": "git+https://github.com/aspoehrer/cccowboychurch.git"
   },
-  "keywords": ["astro", "church", "website"],
+  "keywords": [
+    "astro",
+    "church",
+    "website"
+  ],
   "author": "",
   "license": "ISC",
-
   "bugs": {
     "url": "https://github.com/aspoehrer/cccowboychurch/issues"
   },
@@ -25,6 +28,7 @@
   "dependencies": {
     "@astrojs/node": "^9.5.3",
     "astro": "^5.17.2",
+    "decap-cms-app": "^3.10.0",
     "js-yaml": "^4.1.1"
   }
 }
