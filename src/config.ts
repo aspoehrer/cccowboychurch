@@ -9,13 +9,13 @@ export const siteConfig = {
   
   // Contact Information - EDIT THESE WITH YOUR CHURCH'S INFO
   contact: {
-    phone: "(555) 123-4567",
-    email: "info@caneyreekcowboychurch.com",
+    phone: "(936) 231-1172",
+    email: "markgrimesministries@gmail.com",
     address: {
-      street: "1234 Ranch Road",
-      city: "Your City",
+      street: "17703 Nonesuch Rd",
+      city: "Conroe",
       state: "TX",
-      zip: "12345"
+      zip: "77306"
     }
   },
 
@@ -23,23 +23,47 @@ export const siteConfig = {
   serviceTimes: [
     {
       day: "Sunday",
+      time: "8:00 AM",
+      type: "Breakfast",
+      description: "Start your Sunday with breakfast and fellowship"
+    },
+    {
+      day: "Sunday",
+      time: "8:30 AM",
+      type: "First Worship Service",
+      description: "Early morning worship service"
+    },
+    {
+      day: "Sunday",
+      time: "8:45 AM",
+      type: "Sunday School",
+      description: "Multiple Bible study classes for all ages"
+    },
+    {
+      day: "Sunday",
       time: "10:00 AM",
-      type: "Worship Service",
-      description: "Join us for worship, fellowship, and the Word"
+      type: "Second Worship Service",
+      description: "Main worship service - Lambs Center open 8:30 AM - 11:00 AM"
     },
     {
       day: "Wednesday",
       time: "7:00 PM",
-      type: "Bible Study",
-      description: "Mid-week Bible study and prayer"
+      type: "Service",
+      description: "Mid-week worship and Bible study"
+    },
+    {
+      day: "Friday",
+      time: "7:00 PM",
+      type: "Rejoice in Recovery",
+      description: "Healing from addiction, hurts, and life's struggles"
     }
   ],
 
   // Social Media Links - EDIT OR ADD YOUR SOCIAL MEDIA LINKS
   social: {
-    facebook: "https://facebook.com/yourchurch",
-    instagram: "https://instagram.com/yourchurch",
-    youtube: "https://youtube.com/yourchurch",
+    facebook: "https://www.facebook.com/CaneyCreekCowboyChurch",
+    instagram: "",
+    youtube: "",
     // Add more social links as needed
   },
 
@@ -75,10 +99,10 @@ export const siteConfig = {
     ],
     mailInAddress: {
       name: "Caney Creek Cowboy Church",
-      street: "1234 Ranch Road",
-      city: "Your City",
+      street: "17703 Nonesuch Rd",
+      city: "Conroe",
       state: "TX",
-      zip: "12345"
+      zip: "77306"
     }
   },
 
@@ -102,8 +126,8 @@ export const siteConfig = {
   },
 
   // Map Embed - REPLACE WITH YOUR GOOGLE MAPS EMBED CODE
-  mapEmbed: `<!-- PASTE YOUR GOOGLE MAPS EMBED CODE HERE -->
-<!-- To get embed code: Go to Google Maps > Search for your church > Click Share > Embed a map > Copy HTML -->`,
+  mapEmbed: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.6969842389386!2d-95.4833!3d30.1833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDEwJzU5LjkiTiA5NcKwMjgnNTkuOSJX!5e0!3m2!1sen!2sus!4v1234567890" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<!-- Note: To get your actual embed code: Go to Google Maps > Search for '17703 Nonesuch Rd, Conroe, TX 77306' > Click Share > Embed a map > Copy HTML -->`,
 
   // SEO Settings
   seo: {
