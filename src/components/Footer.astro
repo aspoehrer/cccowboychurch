@@ -75,7 +75,7 @@ import { siteConfig } from '../config';
 
 <style>
   .footer {
-    background-color: var(--color-primary-dark);
+    background-color: var(--color-primary);
     color: var(--color-white);
     padding: var(--spacing-xl) 0 var(--spacing-md);
     margin-top: var(--spacing-xl);
@@ -92,11 +92,15 @@ import { siteConfig } from '../config';
   .footer-section h4 {
     color: var(--color-accent);
     margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+    font-weight: 600;
   }
 
   .footer-section p {
     margin-bottom: var(--spacing-xs);
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .footer-contact {
@@ -115,9 +119,10 @@ import { siteConfig } from '../config';
   }
 
   .footer-links a {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     transition: color 0.3s ease;
+    font-size: 0.95rem;
   }
 
   .footer-links a:hover {
@@ -126,39 +131,42 @@ import { siteConfig } from '../config';
 
   .service-type {
     color: var(--color-accent);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .social-links {
     display: flex;
     gap: var(--spacing-sm);
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .social-links a {
     color: var(--color-white);
     text-decoration: none;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.85;
   }
 
   .social-links a:hover {
-    transform: scale(1.2);
+    transform: translateY(-3px);
+    opacity: 1;
   }
 
   .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
     padding-top: var(--spacing-md);
     text-align: center;
   }
 
   .footer-bottom p {
     margin-bottom: var(--spacing-xs);
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
   }
 
   .footer-credit {
     font-style: italic;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   @media (max-width: 768px) {
