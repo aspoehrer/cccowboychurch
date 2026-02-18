@@ -1,0 +1,70 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "events"
+    label: "Events"
+    folder: "src/content/events"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "End Date", name: "endDate", widget: "datetime", required: false}
+      - {label: "Location", name: "location", widget: "string", default: "17703 Nonesuch Rd, Conroe, TX 77306"}
+      - {label: "Description", name: "body", widget: "markdown"}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+
+  - name: "ministries"
+    label: "Ministries"
+    folder: "src/content/ministries"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Leader", name: "leader", widget: "string", required: false}
+      - {label: "Contact", name: "contact", widget: "string", required: false}
+      - {label: "Description", name: "body", widget: "markdown"}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Icon", name: "icon", widget: "string", default: "church", required: false}
+      - {label: "Order", name: "order", widget: "number", default: 0}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "src/content/pages/about.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Mission Statement", name: "mission", widget: "text"}
+          - {label: "Purpose Statement", name: "purpose", widget: "text"}
+          - {label: "Statement of Faith", name: "faith", widget: "markdown"}
+          - {label: "Pastor's Message", name: "pastorMessage", widget: "markdown"}
+      
+      - label: "Contact Information"
+        name: "contact"
+        file: "src/content/pages/contact.md"
+        fields:
+          - {label: "Address", name: "address", widget: "string"}
+          - {label: "Phone", name: "phone", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Facebook URL", name: "facebook", widget: "string"}
+          - {label: "Map Embed Code", name: "mapEmbed", widget: "text"}
+
+  - name: "gallery"
+    label: "Photo Gallery"
+    folder: "public/images/gallery"
+    create: true
+    media_folder: ""
+    public_folder: ""
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Caption", name: "caption", widget: "text", required: false}
+      - {label: "Date", name: "date", widget: "datetime"}

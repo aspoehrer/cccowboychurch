@@ -6,6 +6,7 @@ A modern, easy-to-maintain church website built with Astro. This website include
 
 - **Fast & Modern**: Built with Astro for blazing-fast performance
 - **Easy Content Management**: Update events, photos, and settings without coding
+- **Decap CMS Admin Panel**: WordPress-like interface at `/admin` for managing content
 - **Responsive Design**: Looks great on desktop, tablet, and mobile
 - **Western Theme**: Custom cowboy-themed styling that's professional yet welcoming
 - **Auto-Populating Gallery**: Just drop images in a folder, they automatically appear
@@ -13,6 +14,31 @@ A modern, easy-to-maintain church website built with Astro. This website include
 - **Multiple Giving Options**: Support for Square, PayPal, Venmo, Cash App, and more
 - **Live Stream Ready**: Easy embed for YouTube/Facebook streams
 - **SEO Optimized**: Built-in SEO best practices
+
+## 🎛️ Content Management System (CMS)
+
+This website includes **Decap CMS** (formerly Netlify CMS) - a powerful, user-friendly admin interface that lets you manage content without touching code!
+
+### What You Can Do with the CMS:
+
+✅ **Add/Edit/Delete Events** through an intuitive form interface  
+✅ **Upload Images** via drag-and-drop  
+✅ **Manage Ministries** with photos and descriptions  
+✅ **Update Page Content** (About, Contact info)  
+✅ **Multi-user Support** - Invite church staff to help manage content  
+✅ **Preview Changes** before publishing  
+✅ **Automatic Deployment** - Changes go live within minutes  
+
+### Accessing the Admin Panel:
+
+Once deployed to Netlify, access the CMS at:
+```
+https://your-site-name.netlify.app/admin
+```
+
+**For complete CMS setup and usage instructions, see:**
+- **[CMS_USAGE.md](./CMS_USAGE.md)** - Complete guide for content editors
+- See [Deployment with CMS Setup](#-deployment-with-cms-setup) section below
 
 ## 📁 Project Structure
 
@@ -104,11 +130,13 @@ See **[HOW-TO-UPDATE.md](./HOW-TO-UPDATE.md)** for detailed, non-technical instr
 | `npm run preview`      | Preview your build locally before deploying      |
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
 
-## 📦 Deployment
+## 📦 Deployment with CMS Setup
 
-This site is ready to deploy to popular hosting platforms:
+This site is ready to deploy with full CMS functionality:
 
-### Deploy to Netlify
+### Deploy to Netlify (Recommended for CMS)
+
+**Why Netlify?** The Decap CMS works best with Netlify's Identity service for authentication.
 
 1. **Push your code to GitHub** (if not already done)
    ```bash
@@ -126,9 +154,29 @@ This site is ready to deploy to popular hosting platforms:
    - Publish directory: `dist`
    - Click "Deploy site"
 
-4. **Done!** Your site will be live in 2-3 minutes
+4. **Enable Netlify Identity** (Required for CMS):
+   - Go to your site dashboard
+   - Click "Identity" in the left menu
+   - Click "Enable Identity"
+   - In Settings → Identity → Services, click "Enable Git Gateway"
 
-### Deploy to Vercel
+5. **Invite Users to CMS:**
+   - In the Identity tab, click "Invite users"
+   - Enter email addresses of staff who need to manage content
+   - They'll receive invitation emails to set up their accounts
+
+6. **Access the CMS:**
+   - Go to `https://your-site-name.netlify.app/admin`
+   - Log in with your invited email address
+   - Start managing content! 🎉
+
+7. **Done!** Your site is live with full CMS functionality
+
+📖 **For detailed CMS usage instructions, see [CMS_USAGE.md](./CMS_USAGE.md)**
+
+### Deploy to Vercel (Without CMS Features)
+
+**Note:** Vercel deployment will work for the website, but CMS features require Netlify Identity.
 
 1. **Push your code to GitHub**
 
@@ -155,10 +203,20 @@ See [Astro Deployment Docs](https://docs.astro.build/en/guides/deploy/) for plat
 
 ## 📝 Content Management Guide
 
-For detailed instructions on updating content (for non-technical users), see:
-- **[HOW-TO-UPDATE.md](./HOW-TO-UPDATE.md)** - Complete guide for church staff
+### Using the CMS (Recommended - No Code Required!)
 
-### Quick Updates:
+Once deployed to Netlify with Identity enabled, you can manage all content through the admin panel:
+
+**📖 [CMS_USAGE.md](./CMS_USAGE.md)** - Complete guide for using the admin interface
+
+Quick access: Go to `https://your-site.netlify.app/admin` and log in.
+
+### Manual Updates (Alternative Method)
+
+For detailed instructions on updating content manually (for non-technical users), see:
+- **[HOW-TO-UPDATE.md](./HOW-TO-UPDATE.md)** - Complete guide for editing files directly
+
+### Quick Manual Updates:
 
 **Add an Event:**
 1. Open `src/content/events/events.yaml`
