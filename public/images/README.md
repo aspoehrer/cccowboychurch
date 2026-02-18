@@ -1,50 +1,67 @@
 # Images for Caney Creek Cowboy Church Website
 
-This directory contains images used throughout the website. Below is a list of images that should be added to complete the site.
+This directory contains images used throughout the website organized in subdirectories.
+
+## Directory Structure
+
+```
+/public/images/
+  /hero/           - Homepage hero images
+  /ministries/     - Ministry-specific photos
+  /events/         - Event graphics and photos
+  /about/          - Pastor and church leadership photos
+  /services/       - Service-related photos
+```
 
 ## Images to Add
 
-### Ministry Images
+### Homepage Hero (`/hero/`)
+1. **hero-welcome.jpg** - Large hero image with church building, Pastor Mark and Mary Grimes
+   - Text overlay: "We would love to see you! Sundays 10am, Wednesdays 7pm"
 
-1. **arena-action.jpg** - Arena action photo for Homepage hero or Arena Team ministry page
-2. **pastor-mark-grimes.jpg** - Pastor Mark Grimes preaching for About page or Homepage
-3. **food-drive.jpg** - Food Drive - pallets of food boxes for Food Drive ministry page
-4. **lambs-sign.jpg** - Children's Ministry sign - Rose Training Center for Children's Ministry page
-5. **josh-toni-thurman.jpg** - Josh & Toni Thurman photo for Children's Ministry page
-6. **bible-heart.jpg** - Bible with heart-shaped pages for About/Beliefs page
-7. **our-beliefs-hero.jpg** - Our Beliefs hero image (same as bible-heart.jpg) for Statement of Faith page
-8. **motorcycle-ministry.jpg** - Motorcycle Ministry - Jesus Saves vests for Motorcycle Ministry page
-9. **rejoice-recovery.jpg** - Rejoice in Recovery graphic for Rejoice in Recovery ministry page
-10. **wednesday-night.jpg** - Wednesday Night Church - "Got my Bible!" for Homepage or Events page
+### Ministry Images (`/ministries/`)
+2. **arena-team.jpg** - Arena action photo for Arena Team Ministry section
+3. **food-drive.jpg** - Food Drive - pallets of food boxes
+4. **lambs-center.jpg** - Children's Ministry sign - Rose Training Center
+5. **thurman-family.jpg** - Josh & Toni Thurman photo for Children's Ministry leaders
+6. **motorcycle-ministry.jpg** - Motorcycle Ministry - Jesus Saves vests
+7. **rejoice-recovery.jpg** - Rejoice in Recovery graphic
 
-### Event Images
+### Event Images (`/events/`)
+8. **love-revival-2025.jpg** - Love Revival promo graphic
+9. **buckle-series.jpg** - Buckle Series schedule
 
-11. **love-revival.jpg** - Love Revival promo graphic for Events page
-12. **buckle-series.jpg** - Buckle Series schedule for Events page
+### About/Pastor Images (`/about/`)
+10. **pastor-mark-preaching.jpg** - Pastor Mark Grimes preaching
+11. **bible-heart.jpg** - Bible with heart-shaped pages for Beliefs section
+12. **our-beliefs-hero.jpg** - Our Beliefs hero image (Statement of Faith)
 
-### Gallery Images
-
-13. Additional photos for the Gallery page should be added to `/public/gallery/`
+### Service Photos (`/services/`)
+13. **wednesday-night-service.jpg** - Wednesday Night "Got my Bible!" photo
 
 ## Image Guidelines
 
 - **Format**: Use JPG for photos, PNG for graphics with transparency
-- **Size**: Optimize images for web (recommended max width: 2000px)
-- **Naming**: Use lowercase with hyphens (e.g., `arena-action.jpg`)
-- **Alt Text**: Always provide descriptive alt text when using images in pages
+- **Size**: Optimize images for web (recommended max width: 2000px for hero, 1200px for others)
+- **Compression**: Use tools like TinyPNG or ImageOptim to reduce file size while maintaining quality
+- **Naming**: Use lowercase with hyphens (e.g., `arena-team.jpg`)
+- **Alt Text**: All images in the code include descriptive alt text for accessibility
 
 ## How to Add Images
 
-1. Place image files in this directory (`/public/images/`)
-2. Reference them in your pages using `/images/filename.jpg`
-3. For gallery images, place them in `/public/gallery/`
+1. Place image files in the appropriate subdirectory (e.g., `/public/images/hero/hero-welcome.jpg`)
+2. Images are already referenced in the page code
+3. Simply add the actual image files with the exact names listed above
+4. The site will automatically display them once the files are present
 
 ## Current Status
 
-All images listed above are placeholders and need to be added. The site is fully functional without them, but adding these images will complete the visual design.
+✅ Directory structure created
+✅ Image references added to all pages
+⏳ **Awaiting actual image files** - Add the 13 images listed above to see them on the site
 
 ## Notes
 
-- Some pages may show placeholder icons (📷) where images should be
-- Event images are referenced in `src/content/events/events.yaml`
-- Once images are added, update the image paths in the respective files
+- Pages have been updated to include `<img>` tags with proper src paths and alt text
+- If an image is missing, the browser will show a broken image icon (you can then add the file)
+- All images use responsive sizing and lazy loading for optimal performance

@@ -80,32 +80,44 @@ const pastEvents = events.filter(event => !isUpcoming(event.date));
         <div class="events-grid">
           {upcomingEvents.map(event => (
             <div class="event-card">
-              <div class="event-date-badge">
-                <div class="badge-month">{new Date(event.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short' })}</div>
-                <div class="badge-day">{new Date(event.date + 'T00:00:00').getDate()}</div>
-              </div>
-              <div class="event-content">
-                <h3>{event.title}</h3>
-                <div class="event-meta">
-                  <div class="event-meta-item">
-                    <span class="meta-icon">📅</span>
-                    <span>{formatDate(event.date)}</span>
-                  </div>
-                  <div class="event-meta-item">
-                    <span class="meta-icon">⏰</span>
-                    <span>{event.time}</span>
-                  </div>
-                  <div class="event-meta-item">
-                    <span class="meta-icon">📍</span>
-                    <span>{event.location}</span>
-                  </div>
+              {event.image && (
+                <div class="event-image-wrapper">
+                  <img 
+                    src={event.image} 
+                    alt={event.title} 
+                    class="event-image"
+                    loading="lazy"
+                  />
                 </div>
-                <p class="event-description">{event.description}</p>
-                {event.contact && (
-                  <p class="event-contact">
-                    <strong>Contact:</strong> {event.contact}
-                  </p>
-                )}
+              )}
+              <div class="event-card-content">
+                <div class="event-date-badge">
+                  <div class="badge-month">{new Date(event.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short' })}</div>
+                  <div class="badge-day">{new Date(event.date + 'T00:00:00').getDate()}</div>
+                </div>
+                <div class="event-content">
+                  <h3>{event.title}</h3>
+                  <div class="event-meta">
+                    <div class="event-meta-item">
+                      <span class="meta-icon">📅</span>
+                      <span>{formatDate(event.date)}</span>
+                    </div>
+                    <div class="event-meta-item">
+                      <span class="meta-icon">⏰</span>
+                      <span>{event.time}</span>
+                    </div>
+                    <div class="event-meta-item">
+                      <span class="meta-icon">📍</span>
+                      <span>{event.location}</span>
+                    </div>
+                  </div>
+                  <p class="event-description">{event.description}</p>
+                  {event.contact && (
+                    <p class="event-contact">
+                      <strong>Contact:</strong> {event.contact}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           ))}
@@ -187,19 +199,40 @@ const pastEvents = events.filter(event => !isUpcoming(event.date));
   }
 
   .event-card {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
     background-color: var(--color-white);
-    padding: var(--spacing-md);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
   }
 
   .event-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
+  }
+
+  /* Event Image */
+  .event-image-wrapper {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Event Card Content */
+  .event-card-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
   }
 
   /* Date Badge */
@@ -351,7 +384,11 @@ const pastEvents = events.filter(event => !isUpcoming(event.date));
       font-size: 2rem;
     }
 
-    .event-card {
+    .event-image-wrapper {
+      height: 250px;
+    }
+
+    .event-card-content {
       grid-template-columns: 1fr;
     }
 

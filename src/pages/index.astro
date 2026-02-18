@@ -5,12 +5,18 @@ import { siteConfig } from '../config';
 ---
 
 <Layout title="Home">
-  <!-- Hero Section -->
-  <section class="hero">
+  <!-- Hero Section with Image -->
+  <section class="hero hero-with-image">
+    <img 
+      src="/images/hero/hero-welcome.jpg" 
+      alt="Caney Creek Cowboy Church - Pastor Mark and Mary Grimes welcoming visitors" 
+      class="hero-image"
+      loading="eager"
+    />
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1 class="hero-title">Welcome to {siteConfig.siteName}</h1>
-      <p class="hero-subtitle">{siteConfig.siteTagline}</p>
+      <h1 class="hero-title">We would love to see you!</h1>
+      <p class="hero-subtitle">Sundays 10am, Wednesdays 7pm</p>
       <div class="hero-actions">
         <a href="/about" class="btn btn-primary">Learn More</a>
         <a href="/contact" class="btn btn-secondary">Visit Us</a>
@@ -18,37 +24,63 @@ import { siteConfig } from '../config';
     </div>
   </section>
 
-  <!-- Welcome Message -->
+  <!-- Welcome Message with Pastor Photo -->
   <section class="section">
-    <div class="container-narrow text-center">
-      <h2>A Message from Pastor Mark Grimes</h2>
+    <div class="container-narrow">
+      <h2 class="text-center">A Message from Pastor Mark Grimes</h2>
       <div class="western-divider">
         <span class="western-divider-icon">★</span>
       </div>
-      <h3 class="pastor-title">"Feeling like you've blown it?"</h3>
-      <p class="lead">
-        Reached the point of no return? That your life hasn't gone as planned? If so, you are not alone.
-      </p>
-      <p>
-        We all know what it feels like to have life disappoint us and not work out as we'd hoped. 
-        Drawing on his own experiences and pivotal Bible stories, Pastor Mark Grimes shows how God is all about comebacks. 
-        God is in the business of giving fresh starts to people. He gives hope to the hopeless. Direction to the directionless. 
-        Help to those who need help.
-      </p>
-      <p class="lead">
-        Please come as you are to Caney Creek Cowboy Church &amp; leave changed- we believe it's not so important how we start as it is to how we finish...
-      </p>
-      <a href="/about" class="btn btn-primary">Read Full Message</a>
+      
+      <div class="pastor-message-container">
+        <div class="pastor-photo-wrapper">
+          <img 
+            src="/images/about/pastor-mark-preaching.jpg" 
+            alt="Pastor Mark Grimes preaching at Caney Creek Cowboy Church" 
+            class="pastor-photo"
+            loading="lazy"
+          />
+        </div>
+        <div class="pastor-message-text">
+          <h3 class="pastor-title">"Feeling like you've blown it?"</h3>
+          <p class="lead">
+            Reached the point of no return? That your life hasn't gone as planned? If so, you are not alone.
+          </p>
+          <p>
+            We all know what it feels like to have life disappoint us and not work out as we'd hoped. 
+            Drawing on his own experiences and pivotal Bible stories, Pastor Mark Grimes shows how God is all about comebacks. 
+            God is in the business of giving fresh starts to people. He gives hope to the hopeless. Direction to the directionless. 
+            Help to those who need help.
+          </p>
+          <p class="lead">
+            Please come as you are to Caney Creek Cowboy Church &amp; leave changed- we believe it's not so important how we start as it is to how we finish...
+          </p>
+          <div class="text-center">
+            <a href="/about" class="btn btn-primary">Read Full Message</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Service Times -->
+  <!-- Service Times with Featured Image -->
   <section class="section section-dark">
-    <div class="container text-center">
-      <h2 style="color: var(--color-accent);">Service Times</h2>
+    <div class="container">
+      <h2 class="text-center" style="color: var(--color-accent);">Service Times</h2>
       <div class="western-divider">
         <span class="western-divider-icon">★</span>
       </div>
+      
+      <!-- Wednesday Night Featured Image -->
+      <div class="featured-service-image">
+        <img 
+          src="/images/services/wednesday-night-service.jpg" 
+          alt="Wednesday Night Service - Got my Bible!" 
+          class="service-feature-photo"
+          loading="lazy"
+        />
+      </div>
+      
       <div class="service-times-grid">
         {siteConfig.serviceTimes.map(service => (
           <div class="service-card">
@@ -121,17 +153,30 @@ import { siteConfig } from '../config';
 </Layout>
 
 <style>
-  /* Hero Section - Modern, clean design */
+  /* Hero Section with Image */
   .hero {
     position: relative;
     min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     color: var(--color-white);
     text-align: center;
     overflow: hidden;
+  }
+
+  .hero-with-image {
+    min-height: 700px;
+  }
+
+  .hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .hero::before {
@@ -149,6 +194,7 @@ import { siteConfig } from '../config';
         rgba(255, 255, 255, 0.02) 20px,
         rgba(255, 255, 255, 0.02) 40px
       );
+    z-index: 1;
   }
 
   .hero-overlay {
@@ -157,12 +203,13 @@ import { siteConfig } from '../config';
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
   }
 
   .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     padding: var(--spacing-xl) var(--spacing-md);
     max-width: 900px;
   }
@@ -210,6 +257,48 @@ import { siteConfig } from '../config';
     font-style: italic;
     margin-bottom: var(--spacing-md);
     font-weight: 600;
+  }
+
+  /* Pastor Message Container */
+  .pastor-message-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+    margin-top: var(--spacing-lg);
+  }
+
+  .pastor-photo-wrapper {
+    position: relative;
+  }
+
+  .pastor-photo {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+  }
+
+  .pastor-message-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  /* Service Featured Image */
+  .featured-service-image {
+    max-width: 600px;
+    margin: var(--spacing-lg) auto;
+    text-align: center;
+  }
+
+  .service-feature-photo {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
   }
 
   /* Service Times Grid */
@@ -322,6 +411,28 @@ import { siteConfig } from '../config';
   @media (max-width: 768px) {
     .hero {
       min-height: 500px;
+    }
+
+    .hero-with-image {
+      min-height: 600px;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+    }
+
+    .pastor-message-container {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .pastor-photo-wrapper {
+      max-width: 400px;
+      margin: 0 auto;
     }
 
     .service-time {

@@ -44,31 +44,44 @@ import Layout from '../layouts/Layout.astro';
       <div class="western-divider">
         <span class="western-divider-icon">★</span>
       </div>
-      <h3 class="text-center pastor-title">"Feeling like you've blown it?"</h3>
-      <p>
-        Reached the point of no return? That your life hasn't gone as planned? If so, you are not alone.
-      </p>
-      <p>
-        We all know what it feels like to have life disappoint us and not work out as we'd hoped. We all know what it's like to long for something different, something better, and something more.
-      </p>
-      <p>
-        Drawing on his own experiences and pivotal Bible stories, Pastor Mark Grimes shows how God is all about comebacks.
-      </p>
-      <p>
-        Samson had blown it repeatedly; nevertheless, he experiences tremendous triumph at the end of his life. The prodigal son, as Jesus describes him, returns home in disgrace only to be welcomed by his Father with open arms- no questions asked. The list goes on: Joseph, Moses, and Peter all experienced comebacks. Jesus himself performed the greatest comeback of all by rising from the dead.
-      </p>
-      <p>
-        God is in the business of giving fresh starts to people. He gives hope to the hopeless. Direction to the directionless. Help to those who need help. God is always good, all the time, and His plans will always prevail, even when our plans don't. He already knows what the solutions are.
-      </p>
-      <p>
-        No matter what kind of disappointment or grief or pain or trouble or heartache we encounter, God always offers a new beginning, a change of heart, and a powerful spiritual turnaround.
-      </p>
-      <p>
-        Please come as you are to Caney Creek Cowboy Church &amp; leave changed- we believe it's not so important how we start as it is to how we finish...
-      </p>
-      <p class="text-right pastor-signature">
-        <strong>Pastor Mark Grimes</strong>
-      </p>
+      
+      <div class="pastor-welcome-container">
+        <div class="pastor-photo-section">
+          <img 
+            src="/images/about/pastor-mark-preaching.jpg" 
+            alt="Pastor Mark Grimes preaching at Caney Creek Cowboy Church" 
+            class="pastor-welcome-photo"
+            loading="lazy"
+          />
+        </div>
+        <div class="pastor-message">
+          <h3 class="pastor-title">"Feeling like you've blown it?"</h3>
+          <p>
+            Reached the point of no return? That your life hasn't gone as planned? If so, you are not alone.
+          </p>
+          <p>
+            We all know what it feels like to have life disappoint us and not work out as we'd hoped. We all know what it's like to long for something different, something better, and something more.
+          </p>
+          <p>
+            Drawing on his own experiences and pivotal Bible stories, Pastor Mark Grimes shows how God is all about comebacks.
+          </p>
+          <p>
+            Samson had blown it repeatedly; nevertheless, he experiences tremendous triumph at the end of his life. The prodigal son, as Jesus describes him, returns home in disgrace only to be welcomed by his Father with open arms- no questions asked. The list goes on: Joseph, Moses, and Peter all experienced comebacks. Jesus himself performed the greatest comeback of all by rising from the dead.
+          </p>
+          <p>
+            God is in the business of giving fresh starts to people. He gives hope to the hopeless. Direction to the directionless. Help to those who need help. God is always good, all the time, and His plans will always prevail, even when our plans don't. He already knows what the solutions are.
+          </p>
+          <p>
+            No matter what kind of disappointment or grief or pain or trouble or heartache we encounter, God always offers a new beginning, a change of heart, and a powerful spiritual turnaround.
+          </p>
+          <p>
+            Please come as you are to Caney Creek Cowboy Church &amp; leave changed- we believe it's not so important how we start as it is to how we finish...
+          </p>
+          <p class="text-right pastor-signature">
+            <strong>Pastor Mark Grimes</strong>
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -79,6 +92,16 @@ import Layout from '../layouts/Layout.astro';
       <div class="western-divider">
         <span class="western-divider-icon">★</span>
       </div>
+      
+      <div class="beliefs-hero-image">
+        <img 
+          src="/images/about/bible-heart.jpg" 
+          alt="Bible with heart-shaped pages - God's love" 
+          class="beliefs-image"
+          loading="lazy"
+        />
+      </div>
+      
       <div class="statement-of-faith">
         <p class="lead">
           We believe the Holy Bible is the inspired word of God and is the basis of our statement of Faith. Caney Creek Cowboy Church is committed, as a body of believers in Jesus Christ, to share the good news of salvation to mankind.
@@ -409,6 +432,47 @@ import Layout from '../layouts/Layout.astro';
     margin-top: var(--spacing-md);
   }
 
+  .pastor-welcome-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+    margin-top: var(--spacing-lg);
+  }
+
+  .pastor-photo-section {
+    position: relative;
+  }
+
+  .pastor-welcome-photo {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+  }
+
+  .pastor-message {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  /* Beliefs Section */
+  .beliefs-hero-image {
+    max-width: 600px;
+    margin: var(--spacing-lg) auto;
+    text-align: center;
+  }
+
+  .beliefs-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+  }
+
   /* Statement of Faith */
   .statement-of-faith {
     background-color: var(--color-white);
@@ -426,6 +490,16 @@ import Layout from '../layouts/Layout.astro';
   @media (max-width: 768px) {
     .page-header h1 {
       font-size: 2rem;
+    }
+
+    .pastor-welcome-container {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .pastor-photo-section {
+      max-width: 400px;
+      margin: 0 auto;
     }
 
     .vision-points {

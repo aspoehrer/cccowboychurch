@@ -29,7 +29,7 @@ events:
     location: "17703 Nonesuch Rd, Conroe, TX 77306"
     description: "Join us for special worship services with guest speaker Michael Finn during our Love Revival weekend."
     contact: "Church Office"
-    image: "/images/love-revival.jpg"
+    image: "/images/events/love-revival-2025.jpg"
 
   - title: "Love Revival - Bill Garrett with Katy Reibenstein"
     date: "2025-02-23"
@@ -37,7 +37,7 @@ events:
     location: "17703 Nonesuch Rd, Conroe, TX 77306"
     description: "Evening service featuring Bill Garrett with special music by Katy Reibenstein."
     contact: "Church Office"
-    image: "/images/love-revival.jpg"
+    image: "/images/events/love-revival-2025.jpg"
 
   - title: "Love Revival - Mark & Mary Grimes"
     date: "2025-02-24"
@@ -45,7 +45,7 @@ events:
     location: "17703 Nonesuch Rd, Conroe, TX 77306"
     description: "Join Pastor Mark and Mary Grimes for an evening of worship and teaching."
     contact: "Church Office"
-    image: "/images/love-revival.jpg"
+    image: "/images/events/love-revival-2025.jpg"
 
   - title: "Love Revival - Judge Wayne Mack"
     date: "2025-02-25"
@@ -53,7 +53,7 @@ events:
     location: "17703 Nonesuch Rd, Conroe, TX 77306"
     description: "Closing service with Judge Wayne Mack during our Wednesday evening service."
     contact: "Church Office"
-    image: "/images/love-revival.jpg"
+    image: "/images/events/love-revival-2025.jpg"
 
   # Buckle Series - Barrel Racing Events
   - title: "BBR Barrel Racing - $500 Added to Open"
@@ -62,7 +62,7 @@ events:
     location: "Church Arena, 17703 Nonesuch Rd, Conroe, TX 77306"
     description: "Friday Night Fellowship - 5D Barrel Racing Jackpot. BBR $500 Added to Open. Classes: Leadline $10, 8 & Under $20, 7-12 $30, 13-18 $30, 19 & Over $30, Open $50. Office fee $10 per rider, Nomination fee $20. Must attend 4 out of 8 for buckles. 75% payback."
     contact: "Pre-enter on Rodeo Results"
-    image: "/images/buckle-series.jpg"
+    image: "/images/events/buckle-series.jpg"
 
   - title: "BBR Barrel Racing"
     date: "2026-01-23"
@@ -70,7 +70,7 @@ events:
     location: "Church Arena, 17703 Nonesuch Rd, Conroe, TX 77306"
     description: "Friday Night Fellowship - 5D Barrel Racing Jackpot. Classes: Leadline $10 (5D), 8 & Under $20 (5D), 7-12 $30 (3D), 13-18 $30 (5D), 19 & Over $30 (3D), Open $50 (5D). Office fee $10 per rider, Nomination fee $20."
     contact: "Pre-enter on Rodeo Results"
-    image: "/images/buckle-series.jpg"
+    image: "/images/events/buckle-series.jpg"
 
   - title: "BBR Barrel Racing - $500 Added to Open"
     date: "2026-02-06"
@@ -78,7 +78,7 @@ events:
     location: "Church Arena, 17703 Nonesuch Rd, Conroe, TX 77306"
     description: "Friday Night Fellowship - 5D Barrel Racing Jackpot. BBR $500 Added to Open. Must attend 4 out of 8 for buckles. Buckles to highpoint earner each class, prizes to D winners."
     contact: "Pre-enter on Rodeo Results"
-    image: "/images/buckle-series.jpg"
+    image: "/images/events/buckle-series.jpg"
 
   - title: "BBR Barrel Racing - $500 Added to Open"
     date: "2026-02-20"
@@ -86,7 +86,7 @@ events:
     location: "Church Arena, 17703 Nonesuch Rd, Conroe, TX 77306"
     description: "Friday Night Fellowship - 5D Barrel Racing Jackpot. BBR $500 Added to Open. 75% payback, BBR pending."
     contact: "Pre-enter on Rodeo Results"
-    image: "/images/buckle-series.jpg"
+    image: "/images/events/buckle-series.jpg"
 
   - title: "BBR Barrel Racing - MAKE UP RACE"
     date: "2026-02-27"
@@ -94,4 +94,4 @@ events:
     location: "Church Arena, 17703 Nonesuch Rd, Conroe, TX 77306"
     description: "Friday Night Fellowship - 5D Barrel Racing Jackpot. This is a make-up race from 12/5. Classes: Leadline $10 (5D), 8 & Under $20 (5D), 7-12 $30 (3D), 13-18 $30 (5D), 19 & Over $30 (3D), Open $50 (5D)."
     contact: "Pre-enter on Rodeo Results"
-    image: "/images/buckle-series.jpg"
+    image: "/images/events/buckle-series.jpg"
