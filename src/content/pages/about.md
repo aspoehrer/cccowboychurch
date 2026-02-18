@@ -1,4 +1,5 @@
 ---
+# PLACEHOLDER CONTENT - Edit via CMS at /admin or manually update this file
 title: "About Caney Creek Cowboy Church"
 mission: "To know Christ and to make Him known"
 purpose: "We exist to worship God, grow in faith, and serve our community"

@@ -59,6 +59,8 @@ collections:
 
   - name: "gallery"
     label: "Photo Gallery"
+    # Note: Gallery images are stored in public folder for direct access
+    # This is intentional - images need to be publicly accessible immediately
     folder: "public/images/gallery"
     create: true
     media_folder: ""

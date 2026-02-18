@@ -1,4 +1,5 @@
 ---
+# PLACEHOLDER CONTENT - Edit via CMS at /admin or manually update this file
 address: "17703 Nonesuch Rd, Conroe, TX 77306"
 phone: "(XXX) XXX-XXXX"
 email: "info@caneycreekcowboychurch.com"
