@@ -1,0 +1,373 @@
+---
+// Events/Calendar Page - Displays upcoming church events
+import Layout from '../layouts/Layout.astro';
+import fs from 'fs';
+import yaml from 'js-yaml';
+import { join } from 'path';
+
+// Read events from YAML file - use process.cwd() for build compatibility
+let eventsData = { events: [] };
+
+try {
+  const eventsPath = join(process.cwd(), 'src/content/events/events.yaml');
+  const fileContents = fs.readFileSync(eventsPath, 'utf8');
+  eventsData = yaml.load(fileContents);
+} catch (e) {
+  console.error('Error loading events:', e);
+}
+
+// Sort events by date
+const events = (eventsData.events || []).sort((a, b) => {
+  return new Date(a.date) - new Date(b.date);
+});
+
+// Helper function to format date
+function formatDate(dateStr) {
+  const date = new Date(dateStr + 'T00:00:00');
+  return date.toLocaleDateString('en-US', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
+
+// Helper function to check if event is upcoming
+function isUpcoming(dateStr) {
+  const eventDate = new Date(dateStr + 'T23:59:59');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return eventDate >= today;
+}
+
+const upcomingEvents = events.filter(event => isUpcoming(event.date));
+const pastEvents = events.filter(event => !isUpcoming(event.date));
+---
+
+<Layout title="Events & Calendar" description="Upcoming events at Caney Creek Cowboy Church">
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container text-center">
+      <h1>Events & Calendar</h1>
+      <p class="lead">Join Us for Upcoming Activities</p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h2>What's Happening</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead">
+        Stay connected with all the exciting events happening at our church. 
+        From worship services to community gatherings, there's always something happening!
+      </p>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  <section class="section section-light">
+    <div class="container">
+      <h2 class="text-center mb-lg">Upcoming Events</h2>
+      
+      {upcomingEvents.length === 0 ? (
+        <div class="no-events">
+          <p>No upcoming events scheduled at this time. Check back soon!</p>
+        </div>
+      ) : (
+        <div class="events-grid">
+          {upcomingEvents.map(event => (
+            <div class="event-card">
+              <div class="event-date-badge">
+                <div class="badge-month">{new Date(event.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short' })}</div>
+                <div class="badge-day">{new Date(event.date + 'T00:00:00').getDate()}</div>
+              </div>
+              <div class="event-content">
+                <h3>{event.title}</h3>
+                <div class="event-meta">
+                  <div class="event-meta-item">
+                    <span class="meta-icon">📅</span>
+                    <span>{formatDate(event.date)}</span>
+                  </div>
+                  <div class="event-meta-item">
+                    <span class="meta-icon">⏰</span>
+                    <span>{event.time}</span>
+                  </div>
+                  <div class="event-meta-item">
+                    <span class="meta-icon">📍</span>
+                    <span>{event.location}</span>
+                  </div>
+                </div>
+                <p class="event-description">{event.description}</p>
+                {event.contact && (
+                  <p class="event-contact">
+                    <strong>Contact:</strong> {event.contact}
+                  </p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- How to Add Events Info -->
+  <section class="section section-accent">
+    <div class="container-narrow text-center">
+      <h2>Want to Add an Event?</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead">
+        Church staff can easily add events by editing the events.yaml file. 
+        See the HOW-TO-UPDATE.md guide for step-by-step instructions.
+      </p>
+      <div class="info-box">
+        <h4>Event Information to Include:</h4>
+        <ul class="event-checklist">
+          <li>Event title and description</li>
+          <li>Date and time</li>
+          <li>Location</li>
+          <li>Contact information</li>
+          <li>Optional: Event image</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Past Events (Optional - shows last 3) -->
+  {pastEvents.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <h2 class="text-center mb-lg">Recent Past Events</h2>
+        <div class="past-events-list">
+          {pastEvents.slice(-3).reverse().map(event => (
+            <div class="past-event-item">
+              <div class="past-event-date">
+                {formatDate(event.date)}
+              </div>
+              <div class="past-event-details">
+                <h4>{event.title}</h4>
+                <p>{event.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: var(--color-white);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .page-header .lead {
+    color: var(--color-accent);
+    font-size: 1.3rem;
+  }
+
+  /* Events Grid */
+  .events-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+  }
+
+  .event-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-md);
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Date Badge */
+  .event-date-badge {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .badge-month {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .badge-day {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  /* Event Content */
+  .event-content h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .event-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+
+  .meta-icon {
+    font-size: 1rem;
+  }
+
+  .event-description {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .event-contact {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .event-contact strong {
+    color: var(--color-primary);
+  }
+
+  /* No Events Message */
+  .no-events {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-light);
+  }
+
+  /* Info Box */
+  .info-box {
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    margin-top: var(--spacing-md);
+    text-align: left;
+  }
+
+  .info-box h4 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+  }
+
+  .event-checklist {
+    list-style: none;
+    padding: 0;
+  }
+
+  .event-checklist li {
+    padding: var(--spacing-xs) 0;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .event-checklist li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+
+  /* Past Events */
+  .past-events-list {
+    display: grid;
+    gap: var(--spacing-sm);
+  }
+
+  .past-event-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background-color: var(--color-gray-light);
+    border-radius: var(--radius-md);
+  }
+
+  .past-event-date {
+    font-weight: 600;
+    color: var(--color-primary);
+    white-space: nowrap;
+  }
+
+  .past-event-details h4 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1rem;
+  }
+
+  .past-event-details p {
+    color: var(--color-text-light);
+    margin-bottom: 0;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2rem;
+    }
+
+    .event-card {
+      grid-template-columns: 1fr;
+    }
+
+    .event-date-badge {
+      width: 100%;
+      height: auto;
+      padding: var(--spacing-sm);
+    }
+
+    .event-meta {
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+
+    .past-event-item {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

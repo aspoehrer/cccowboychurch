@@ -1,0 +1,424 @@
+---
+// Live Stream Page - Embed weekly service streams
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config';
+---
+
+<Layout title="Live Stream" description="Watch Caney Creek Cowboy Church services online">
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container text-center">
+      <h1>Live Stream</h1>
+      <p class="lead">Join Us Online from Anywhere</p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h2>Worship With Us Online</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead">
+        Can't make it to church in person? No problem! Watch our services live 
+        or catch up on previous messages anytime.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sunday Service Stream -->
+  {siteConfig.liveStream.sunday.enabled && (
+    <section class="section section-light">
+      <div class="container">
+        <div class="stream-section">
+          <div class="stream-header">
+            <h2>Sunday Worship Service</h2>
+            <p class="stream-time">
+              <span class="time-icon">📅</span>
+              {siteConfig.liveStream.sunday.streamTime}
+            </p>
+          </div>
+
+          <div class="stream-container">
+            <!-- INSTRUCTIONS: Replace this placeholder with your actual YouTube/Facebook embed code -->
+            <!-- To get embed code:
+                 YouTube: Go to your video > Share > Embed > Copy the <iframe> code
+                 Facebook: Go to your video > Click the three dots > Embed > Copy code
+            -->
+            
+            {siteConfig.liveStream.sunday.embedCode.includes('<iframe') ? (
+              <div class="embed-wrapper" set:html={siteConfig.liveStream.sunday.embedCode}></div>
+            ) : (
+              <div class="embed-placeholder">
+                <div class="placeholder-content">
+                  <span class="placeholder-icon">📺</span>
+                  <h3>Stream Embed Goes Here</h3>
+                  <p>To add your live stream:</p>
+                  <ol class="embed-instructions">
+                    <li>Go to <code>src/config.ts</code></li>
+                    <li>Find the <code>liveStream.sunday.embedCode</code> section</li>
+                    <li>Paste your YouTube or Facebook embed code</li>
+                    <li>Save and rebuild</li>
+                  </ol>
+                  <div class="platform-info">
+                    <p><strong>Current Platform:</strong> {siteConfig.liveStream.sunday.platform}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div class="stream-description">
+            <h3>What to Expect</h3>
+            <p>
+              Our Sunday worship service includes contemporary and traditional worship, 
+              biblical preaching, and a welcoming atmosphere. Services typically last 
+              about 90 minutes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Wednesday Service Stream -->
+  {siteConfig.liveStream.wednesday.enabled && (
+    <section class="section">
+      <div class="container">
+        <div class="stream-section">
+          <div class="stream-header">
+            <h2>Wednesday Bible Study</h2>
+            <p class="stream-time">
+              <span class="time-icon">📅</span>
+              {siteConfig.liveStream.wednesday.streamTime}
+            </p>
+          </div>
+
+          <div class="stream-container">
+            {siteConfig.liveStream.wednesday.embedCode.includes('<iframe') ? (
+              <div class="embed-wrapper" set:html={siteConfig.liveStream.wednesday.embedCode}></div>
+            ) : (
+              <div class="embed-placeholder">
+                <div class="placeholder-content">
+                  <span class="placeholder-icon">📺</span>
+                  <h3>Stream Embed Goes Here</h3>
+                  <p>To add your live stream:</p>
+                  <ol class="embed-instructions">
+                    <li>Go to <code>src/config.ts</code></li>
+                    <li>Find the <code>liveStream.wednesday.embedCode</code> section</li>
+                    <li>Paste your YouTube or Facebook embed code</li>
+                    <li>Save and rebuild</li>
+                  </ol>
+                  <div class="platform-info">
+                    <p><strong>Current Platform:</strong> {siteConfig.liveStream.wednesday.platform}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div class="stream-description">
+            <h3>About Our Midweek Service</h3>
+            <p>
+              Join us for an in-depth study of God's Word. Our Wednesday night Bible 
+              studies are casual, interactive, and designed to help you grow in your faith.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Previous Messages / Archive -->
+  <section class="section section-accent">
+    <div class="container-narrow text-center">
+      <h2>Previous Messages</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead">
+        Missed a service? Catch up on previous messages and sermons.
+      </p>
+      
+      <div class="archive-links">
+        {siteConfig.social.youtube && (
+          <a href={siteConfig.social.youtube} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            📺 Visit Our YouTube Channel
+          </a>
+        )}
+        {siteConfig.social.facebook && (
+          <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            📘 Watch on Facebook
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Streaming Tips -->
+  <section class="section">
+    <div class="container-narrow">
+      <h2 class="text-center">Viewing Tips</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">📱</div>
+          <h4>Multiple Devices</h4>
+          <p>Watch on your computer, tablet, smartphone, or smart TV</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">🔔</div>
+          <h4>Get Notified</h4>
+          <p>Subscribe to our channel and turn on notifications to know when we go live</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">💬</div>
+          <h4>Join the Chat</h4>
+          <p>Participate in the live chat during the stream to connect with others</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">🔄</div>
+          <h4>Watch Anytime</h4>
+          <p>All streams are archived so you can watch them whenever it's convenient</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit In Person CTA -->
+  <section class="section section-dark" style="text-align: center;">
+    <div class="container-narrow">
+      <h2 style="color: var(--color-accent);">We'd Love to See You In Person!</h2>
+      <p style="color: var(--color-white); font-size: 1.2rem; margin-bottom: var(--spacing-md);">
+        While our online services are a great way to stay connected, nothing beats 
+        worshiping together in person. Come visit us!
+      </p>
+      <a href="/contact" class="btn btn-accent">Plan Your Visit</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: var(--color-white);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .page-header .lead {
+    color: var(--color-accent);
+    font-size: 1.3rem;
+  }
+
+  /* Stream Section */
+  .stream-section {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .stream-header {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .stream-header h2 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .stream-time {
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .time-icon {
+    font-size: 1.5rem;
+  }
+
+  /* Stream Container */
+  .stream-container {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .embed-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .embed-wrapper :global(iframe) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Embed Placeholder */
+  .embed-placeholder {
+    background-color: var(--color-gray-light);
+    padding: var(--spacing-xl);
+    text-align: center;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .placeholder-content {
+    max-width: 500px;
+  }
+
+  .placeholder-icon {
+    font-size: 5rem;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .placeholder-content h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .embed-instructions {
+    text-align: left;
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .embed-instructions li {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-light);
+  }
+
+  .embed-instructions code {
+    background-color: var(--color-gray-light);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-family: 'Courier New', monospace;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+  }
+
+  .platform-info {
+    background-color: var(--color-white);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-sm);
+  }
+
+  .platform-info p {
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  /* Stream Description */
+  .stream-description {
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .stream-description h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .stream-description p {
+    color: var(--color-text-light);
+    margin-bottom: 0;
+  }
+
+  /* Archive Links */
+  .archive-links {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin-top: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  /* Tips Grid */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  .tip-card {
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .tip-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tip-card h4 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.1rem;
+  }
+
+  .tip-card p {
+    color: var(--color-text-light);
+    margin-bottom: 0;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2rem;
+    }
+
+    .embed-placeholder {
+      padding: var(--spacing-md);
+      min-height: 300px;
+    }
+
+    .placeholder-icon {
+      font-size: 3rem;
+    }
+
+    .archive-links {
+      flex-direction: column;
+    }
+
+    .archive-links .btn {
+      width: 100%;
+    }
+  }
+</style>

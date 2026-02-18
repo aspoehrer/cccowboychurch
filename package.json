@@ -1,0 +1,30 @@
+{
+  "name": "cccowboychurch",
+  "version": "1.0.0",
+  "description": "Caney Creek Cowboy Church Website",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aspoehrer/cccowboychurch.git"
+  },
+  "keywords": ["astro", "church", "website"],
+  "author": "",
+  "license": "ISC",
+
+  "bugs": {
+    "url": "https://github.com/aspoehrer/cccowboychurch/issues"
+  },
+  "homepage": "https://github.com/aspoehrer/cccowboychurch#readme",
+  "dependencies": {
+    "@astrojs/node": "^9.5.3",
+    "astro": "^5.17.2",
+    "js-yaml": "^4.1.1"
+  }
+}

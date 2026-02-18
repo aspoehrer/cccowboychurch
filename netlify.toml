@@ -1,0 +1,19 @@
+# Netlify Configuration
+# This file tells Netlify how to build and deploy your site
+
+[build]
+  # Build command - runs when you deploy
+  command = "npm run build"
+  
+  # Output directory - where your built site files are
+  publish = "dist"
+
+# Redirect rules (optional)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables (optional - set these in Netlify dashboard)
+# [build.environment]
+#   NODE_VERSION = "18"

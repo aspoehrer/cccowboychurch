@@ -1,0 +1,88 @@
+# Events Data File
+# This file contains all upcoming church events
+# Copy and paste the template below to add new events
+#
+# EVENT TEMPLATE (copy everything between the dashes):
+# ---------------------------------------------
+# - title: "Event Name"
+#   date: "YYYY-MM-DD"
+#   time: "Time (e.g., 6:00 PM)"
+#   location: "Location Name"
+#   description: "Brief description of the event"
+#   contact: "Contact person or email"
+#   image: "/images/event-placeholder.jpg"  # Optional: path to event image
+# ---------------------------------------------
+#
+# INSTRUCTIONS:
+# 1. Copy the template above
+# 2. Replace the placeholder text with your event details
+# 3. Make sure to keep the exact spacing and format
+# 4. Date format must be YYYY-MM-DD (e.g., 2024-12-25)
+# 5. Save this file after making changes
+#
+# EXAMPLE EVENTS (These are placeholders - replace with real events):
+
+events:
+  - title: "Sunday Worship Service"
+    date: "2024-12-24"
+    time: "10:00 AM"
+    location: "Main Sanctuary"
+    description: "Join us for our Christmas Eve worship service featuring special music, a message of hope, and communion."
+    contact: "office@church.com"
+    image: "/images/worship-placeholder.jpg"
+
+  - title: "Youth Group Game Night"
+    date: "2024-12-27"
+    time: "7:00 PM"
+    location: "Youth Room"
+    description: "An evening of fun games, fellowship, and food for all middle and high school students."
+    contact: "youth@church.com"
+    image: "/images/youth-placeholder.jpg"
+
+  - title: "New Year's Prayer Service"
+    date: "2024-12-31"
+    time: "9:00 PM"
+    location: "Sanctuary"
+    description: "Ring in the new year with prayer, worship, and thanksgiving. Service includes communion at midnight."
+    contact: "office@church.com"
+    image: "/images/prayer-placeholder.jpg"
+
+  - title: "Men's Breakfast"
+    date: "2025-01-06"
+    time: "8:00 AM"
+    location: "Fellowship Hall"
+    description: "Monthly men's breakfast featuring a hearty meal, fellowship, and a devotional message."
+    contact: "mens@church.com"
+    image: "/images/mens-placeholder.jpg"
+
+  - title: "Women's Bible Study"
+    date: "2025-01-08"
+    time: "7:00 PM"
+    location: "Meeting Room 2"
+    description: "Weekly women's Bible study exploring the book of Philippians. All women are welcome!"
+    contact: "womens@church.com"
+    image: "/images/womens-placeholder.jpg"
+
+  - title: "Church-Wide Potluck"
+    date: "2025-01-15"
+    time: "12:00 PM"
+    location: "Fellowship Hall"
+    description: "Bring your favorite dish and join us for a time of food and fellowship after Sunday service."
+    contact: "office@church.com"
+    image: "/images/potluck-placeholder.jpg"
+
+  - title: "Annual Rodeo Day"
+    date: "2025-01-20"
+    time: "2:00 PM"
+    location: "Church Arena"
+    description: "Our annual rodeo event featuring barrel racing, team roping, and more. Fun for the whole family!"
+    contact: "rodeo@church.com"
+    image: "/images/rodeo-placeholder.jpg"
+
+  - title: "Marriage Enrichment Dinner"
+    date: "2025-01-25"
+    time: "6:30 PM"
+    location: "Fellowship Hall"
+    description: "A special evening for married couples featuring dinner, worship, and teaching on building strong marriages."
+    contact: "marriage@church.com"
+    image: "/images/marriage-placeholder.jpg"

@@ -1,0 +1,325 @@
+---
+// Homepage - The main landing page
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config';
+---
+
+<Layout title="Home">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Welcome to {siteConfig.siteName}</h1>
+      <p class="hero-subtitle">{siteConfig.siteTagline}</p>
+      <div class="hero-actions">
+        <a href="/about" class="btn btn-primary">Learn More</a>
+        <a href="/contact" class="btn btn-secondary">Visit Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Welcome Message -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h2>Where Faith Meets Community</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead">
+        Welcome to Caney Creek Cowboy Church! We're a faith community that embraces 
+        both traditional Christian values and the spirit of the West. Whether you're 
+        a rancher, a rider, or just someone looking for an authentic place to worship, 
+        you'll find a home here.
+      </p>
+      <p>
+        We believe in keeping things simple, genuine, and focused on what matters most: 
+        faith, family, and fellowship. Join us for worship, and experience a church 
+        where you can come as you are—boots, jeans, and all.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Times -->
+  <section class="section section-dark">
+    <div class="container text-center">
+      <h2 style="color: var(--color-accent);">Service Times</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <div class="service-times-grid">
+        {siteConfig.serviceTimes.map(service => (
+          <div class="service-card">
+            <h3>{service.day}</h3>
+            <div class="service-time">{service.time}</div>
+            <div class="service-type">{service.type}</div>
+            <p>{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Navigation -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center">Explore Our Church</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <div class="quick-nav-grid">
+        <a href="/about" class="quick-nav-card">
+          <div class="quick-nav-icon">📖</div>
+          <h3>About Us</h3>
+          <p>Learn about our mission, vision, and leadership</p>
+        </a>
+        <a href="/ministries" class="quick-nav-card">
+          <div class="quick-nav-icon">🙏</div>
+          <h3>Ministries</h3>
+          <p>Discover opportunities to serve and grow</p>
+        </a>
+        <a href="/events" class="quick-nav-card">
+          <div class="quick-nav-icon">📅</div>
+          <h3>Events</h3>
+          <p>See what's happening at our church</p>
+        </a>
+        <a href="/gallery" class="quick-nav-card">
+          <div class="quick-nav-icon">📸</div>
+          <h3>Gallery</h3>
+          <p>View photos from our church family</p>
+        </a>
+        <a href="/giving" class="quick-nav-card">
+          <div class="quick-nav-icon">💝</div>
+          <h3>Giving</h3>
+          <p>Support our mission and ministry</p>
+        </a>
+        <a href="/livestream" class="quick-nav-card">
+          <div class="quick-nav-icon">📡</div>
+          <h3>Live Stream</h3>
+          <p>Watch services online from anywhere</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section section-accent">
+    <div class="container-narrow text-center">
+      <h2>First Time Visitor?</h2>
+      <p class="lead">
+        We'd love to meet you! Come as you are and experience a warm, welcoming 
+        community that celebrates faith with a western spirit.
+      </p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary">Plan Your Visit</a>
+        <a href="/livestream" class="btn btn-secondary">Watch Online</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero Section - Modern, clean design */
+  .hero {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(255, 255, 255, 0.02) 20px,
+        rgba(255, 255, 255, 0.02) 40px
+      );
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: var(--spacing-xl) var(--spacing-md);
+    max-width: 900px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-white);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.2rem, 3vw, 1.75rem);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-accent);
+    font-weight: 300;
+    font-style: normal;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-actions .btn {
+    min-width: 180px;
+  }
+
+  /* Lead Text */
+  .lead {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Service Times Grid */
+  .service-times-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  .service-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+  }
+
+  .service-card h3 {
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .service-time {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .service-type {
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .service-card p {
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+
+  /* Quick Navigation Grid */
+  .quick-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  .quick-nav-card {
+    background-color: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-text);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-gray);
+  }
+
+  .quick-nav-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-secondary);
+    color: var(--color-text);
+  }
+
+  .quick-nav-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+    display: block;
+  }
+
+  .quick-nav-card h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.25rem;
+  }
+
+  .quick-nav-card p {
+    color: var(--color-text-light);
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+
+  /* Call to Action */
+  .cta-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin-top: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .cta-actions .btn {
+    min-width: 180px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 500px;
+    }
+
+    .service-time {
+      font-size: 1.75rem;
+    }
+
+    .hero-actions .btn,
+    .cta-actions .btn {
+      min-width: 150px;
+    }
+  }
+</style>
