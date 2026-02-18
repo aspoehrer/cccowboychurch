@@ -1,0 +1,604 @@
+---
+// Contact Page - Location, contact form, and map
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config';
+---
+
+<Layout title="Contact Us" description="Get in touch with Caney Creek Cowboy Church">
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container text-center">
+      <h1>Contact Us</h1>
+      <p class="lead">We'd Love to Hear From You</p>
+    </div>
+  </section>
+
+  <!-- Contact Info & Form -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Information -->
+        <div class="contact-info-section">
+          <h2>Get in Touch</h2>
+          <p>
+            Whether you have questions, need prayer, or want to learn more about our church, 
+            we're here to help. Reach out to us using any of the methods below.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div class="contact-content">
+                <h4>Address</h4>
+                <address>
+                  {siteConfig.contact.address.street}<br>
+                  {siteConfig.contact.address.city}, {siteConfig.contact.address.state} {siteConfig.contact.address.zip}
+                </address>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div class="contact-content">
+                <h4>Phone</h4>
+                <a href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}>
+                  {siteConfig.contact.phone}
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">✉️</div>
+              <div class="contact-content">
+                <h4>Email</h4>
+                <a href={`mailto:${siteConfig.contact.email}`}>
+                  {siteConfig.contact.email}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service Times -->
+          <div class="service-times-box">
+            <h3>Service Times</h3>
+            {siteConfig.serviceTimes.map(service => (
+              <div class="service-time-item">
+                <strong>{service.day}:</strong> {service.time} - {service.type}
+              </div>
+            ))}
+          </div>
+
+          <!-- Social Media -->
+          <div class="social-section">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+              {siteConfig.social.facebook && (
+                <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  📘 Facebook
+                </a>
+              )}
+              {siteConfig.social.instagram && (
+                <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  📷 Instagram
+                </a>
+              )}
+              {siteConfig.social.youtube && (
+                <a href={siteConfig.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                  📺 YouTube
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-section">
+          <h2>Send Us a Message</h2>
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Name *</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                class="form-input" 
+                required 
+                placeholder="Your Name"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email *</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="form-input" 
+                required 
+                placeholder="your.email@example.com"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                class="form-input" 
+                placeholder="(555) 123-4567"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject *</label>
+              <select id="subject" name="subject" class="form-select" required>
+                <option value="">Select a subject...</option>
+                <option value="general">General Inquiry</option>
+                <option value="visit">Planning a Visit</option>
+                <option value="prayer">Prayer Request</option>
+                <option value="ministry">Ministry Information</option>
+                <option value="event">Event Question</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Message *</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                class="form-textarea" 
+                required 
+                placeholder="How can we help you?"
+                rows="6"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              Send Message
+            </button>
+
+            <div id="formMessage" class="form-message"></div>
+          </form>
+
+          <p class="form-note">
+            <small>
+              * Required fields. We'll respond to your message as soon as possible, 
+              typically within 24-48 hours.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="section section-light">
+    <div class="container">
+      <h2 class="text-center mb-lg">Find Us</h2>
+      
+      <div class="map-container">
+        <!-- INSTRUCTIONS: Replace this with your Google Maps embed code -->
+        <!-- To get embed code:
+             1. Go to Google Maps
+             2. Search for your church address
+             3. Click "Share" button
+             4. Click "Embed a map" tab
+             5. Copy the <iframe> code
+             6. Paste it in src/config.ts under mapEmbed
+        -->
+        
+        {siteConfig.mapEmbed.includes('<iframe') ? (
+          <div class="map-embed" set:html={siteConfig.mapEmbed}></div>
+        ) : (
+          <div class="map-placeholder">
+            <div class="placeholder-content">
+              <span class="placeholder-icon">🗺️</span>
+              <h3>Map Embed Goes Here</h3>
+              <p>To add your church location map:</p>
+              <ol class="map-instructions">
+                <li>Go to Google Maps and search for your church</li>
+                <li>Click the "Share" button</li>
+                <li>Select "Embed a map"</li>
+                <li>Copy the <code>&lt;iframe&gt;</code> code</li>
+                <li>Open <code>src/config.ts</code></li>
+                <li>Paste the code into the <code>mapEmbed</code> field</li>
+                <li>Save and rebuild</li>
+              </ol>
+              <div class="placeholder-address">
+                <p><strong>Address:</strong></p>
+                <address>
+                  {siteConfig.contact.address.street}<br>
+                  {siteConfig.contact.address.city}, {siteConfig.contact.address.state} {siteConfig.contact.address.zip}
+                </address>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div class="directions-note text-center mt-md">
+        <p>
+          <a 
+            href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+              `${siteConfig.contact.address.street}, ${siteConfig.contact.address.city}, ${siteConfig.contact.address.state} ${siteConfig.contact.address.zip}`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            Get Directions
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit Info -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h2>Planning Your First Visit?</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead">
+        We can't wait to welcome you! Here's what to expect when you visit.
+      </p>
+      
+      <div class="visit-info-grid">
+        <div class="visit-info-item">
+          <div class="visit-icon">👕</div>
+          <h4>What to Wear</h4>
+          <p>Come as you are! Jeans, boots, and casual attire are perfectly welcome.</p>
+        </div>
+
+        <div class="visit-info-item">
+          <div class="visit-icon">🅿️</div>
+          <h4>Parking</h4>
+          <p>Free parking is available in our lot. Look for visitor parking near the entrance.</p>
+        </div>
+
+        <div class="visit-info-item">
+          <div class="visit-icon">☕</div>
+          <h4>Coffee & Greeting</h4>
+          <p>Arrive a few minutes early for coffee and to meet our friendly greeters.</p>
+        </div>
+
+        <div class="visit-info-item">
+          <div class="visit-icon">👶</div>
+          <h4>Children's Ministry</h4>
+          <p>Age-appropriate programs available for infants through 5th grade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: var(--color-white);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .page-header .lead {
+    color: var(--color-accent);
+    font-size: 1.3rem;
+  }
+
+  /* Contact Grid */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  /* Contact Info */
+  .contact-info-section h2 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .contact-details {
+    margin: var(--spacing-lg) 0;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .contact-content h4 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1rem;
+  }
+
+  .contact-content address {
+    font-style: normal;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .contact-content a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .contact-content a:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
+  }
+
+  /* Service Times Box */
+  .service-times-box {
+    background-color: var(--color-gray-light);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .service-times-box h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.2rem;
+  }
+
+  .service-time-item {
+    padding: var(--spacing-xs) 0;
+    color: var(--color-text-light);
+  }
+
+  .service-time-item strong {
+    color: var(--color-text);
+  }
+
+  /* Social Section */
+  .social-section h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.2rem;
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .social-links a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: var(--color-secondary);
+  }
+
+  /* Contact Form */
+  .contact-form-section {
+    background-color: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .contact-form-section h2 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .btn-block {
+    width: 100%;
+  }
+
+  .form-message {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    display: none;
+  }
+
+  .form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block;
+  }
+
+  .form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+  }
+
+  .form-note {
+    margin-top: var(--spacing-md);
+    color: var(--color-text-light);
+    font-style: italic;
+  }
+
+  .form-note small {
+    font-size: 0.9rem;
+  }
+
+  /* Map Container */
+  .map-container {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .map-embed {
+    width: 100%;
+    height: 450px;
+  }
+
+  .map-embed :global(iframe) {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Map Placeholder */
+  .map-placeholder {
+    background-color: var(--color-gray-light);
+    padding: var(--spacing-xl);
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .map-placeholder .placeholder-content {
+    max-width: 600px;
+    text-align: center;
+  }
+
+  .placeholder-icon {
+    font-size: 5rem;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .map-placeholder h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .map-instructions {
+    text-align: left;
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .map-instructions li {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-light);
+  }
+
+  .map-instructions code {
+    background-color: var(--color-gray-light);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-family: 'Courier New', monospace;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+  }
+
+  .placeholder-address {
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-md);
+  }
+
+  .placeholder-address address {
+    font-style: normal;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  /* Visit Info Grid */
+  .visit-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  .visit-info-item {
+    text-align: center;
+  }
+
+  .visit-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .visit-info-item h4 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.1rem;
+  }
+
+  .visit-info-item p {
+    color: var(--color-text-light);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2rem;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .contact-form-section {
+      padding: var(--spacing-md);
+    }
+
+    .map-placeholder {
+      padding: var(--spacing-md);
+      min-height: 300px;
+    }
+
+    .placeholder-icon {
+      font-size: 3rem;
+    }
+  }
+</style>
+
+<script>
+  // Simple form handling (you'll need to implement actual backend/email service)
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const formMessage = document.getElementById('formMessage') as HTMLDivElement;
+
+  if (form && formMessage) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      
+      // TODO: Implement actual form submission
+      // Options: Email service (EmailJS, Formspree), Backend API, etc.
+      
+      // Simulated submission for now
+      formMessage.textContent = 'Form submission not yet configured. See HOW-TO-UPDATE.md for instructions on setting up form handling.';
+      formMessage.className = 'form-message error';
+      
+      console.log('Form data:', data);
+      
+      // Example of what success would look like:
+      // formMessage.textContent = 'Thank you! Your message has been sent successfully.';
+      // formMessage.className = 'form-message success';
+      // form.reset();
+    });
+  }
+</script>

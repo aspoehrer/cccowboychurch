@@ -1,0 +1,163 @@
+---
+// Header Component
+// This is the navigation bar that appears on every page
+import { siteConfig } from '../config';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a href="/" class="logo">
+          <span class="logo-icon">🤠</span>
+          <span class="logo-text">{siteConfig.siteName}</span>
+        </a>
+      </div>
+      
+      <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
+        <li><a href="/about" class={currentPath === '/about' ? 'active' : ''}>About</a></li>
+        <li><a href="/ministries" class={currentPath === '/ministries' ? 'active' : ''}>Ministries</a></li>
+        <li><a href="/events" class={currentPath === '/events' ? 'active' : ''}>Events</a></li>
+        <li><a href="/gallery" class={currentPath === '/gallery' ? 'active' : ''}>Gallery</a></li>
+        <li><a href="/giving" class={currentPath === '/giving' ? 'active' : ''}>Giving</a></li>
+        <li><a href="/livestream" class={currentPath === '/livestream' ? 'active' : ''}>Live Stream</a></li>
+        <li><a href="/contact" class={currentPath === '/contact' ? 'active' : ''}>Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: var(--color-primary-dark);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .navbar-brand .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: var(--font-heading);
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+  }
+
+  .navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .navbar-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-white);
+    transition: all 0.3s ease;
+  }
+
+  .navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-menu a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .navbar-menu a:hover,
+  .navbar-menu a.active {
+    color: var(--color-accent);
+  }
+
+  .navbar-menu a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .navbar-toggle {
+      display: flex;
+    }
+
+    .navbar-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background-color: var(--color-primary-dark);
+      padding: 1rem;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .navbar-menu.active {
+      max-height: 500px;
+    }
+
+    .navbar-menu li {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-menu a {
+      display: block;
+      padding: 1rem 0;
+    }
+  }
+</style>
+
+<script>
+  // Mobile navigation toggle
+  const navbarToggle = document.getElementById('navbarToggle');
+  const navbarMenu = document.getElementById('navbarMenu');
+
+  if (navbarToggle && navbarMenu) {
+    navbarToggle.addEventListener('click', () => {
+      navbarMenu.classList.toggle('active');
+    });
+  }
+</script>

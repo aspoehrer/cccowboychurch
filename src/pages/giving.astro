@@ -1,0 +1,418 @@
+---
+// Giving Page - Multiple giving options
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config';
+
+const givingMethods = siteConfig.giving.methods.filter(method => method.enabled);
+---
+
+<Layout title="Giving" description="Support Caney Creek Cowboy Church through online giving">
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container text-center">
+      <h1>Give</h1>
+      <p class="lead">Supporting God's Work Together</p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h2>Your Generosity Makes a Difference</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead">
+        Thank you for your faithful generosity! Your gifts help us spread the Gospel, 
+        support our ministries, and serve our community.
+      </p>
+      <p>
+        "Each of you should give what you have decided in your heart to give, not reluctantly 
+        or under compulsion, for God loves a cheerful giver." - 2 Corinthians 9:7
+      </p>
+    </div>
+  </section>
+
+  <!-- Online Giving Options -->
+  <section class="section section-light">
+    <div class="container">
+      <h2 class="text-center mb-lg">Online Giving Options</h2>
+      
+      <div class="giving-grid">
+        {givingMethods.map(method => (
+          <div class="giving-card">
+            <div class="giving-card-header">
+              <h3>{method.name}</h3>
+            </div>
+            <div class="giving-card-body">
+              <p>{method.description}</p>
+              
+              {method.qrCode && (
+                <div class="qr-code-placeholder">
+                  <div class="qr-placeholder-box">
+                    <span>📱</span>
+                    <p>QR Code Here</p>
+                    <small>Place image at: {method.qrCode}</small>
+                  </div>
+                </div>
+              )}
+              
+              {method.username && (
+                <div class="payment-username">
+                  <strong>{method.username}</strong>
+                </div>
+              )}
+              
+              {method.link && (
+                <a href={method.link} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+                  Give via {method.name}
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Traditional Giving -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center mb-lg">Traditional Giving Methods</h2>
+      
+      <div class="traditional-giving-grid">
+        <!-- In-Person Giving -->
+        <div class="traditional-card">
+          <div class="traditional-icon">💰</div>
+          <h3>Give In Person</h3>
+          <p>
+            During any of our services, you can place your gift in the offering plate 
+            or drop it off at the church office during business hours.
+          </p>
+        </div>
+
+        <!-- Mail-In Giving -->
+        <div class="traditional-card">
+          <div class="traditional-icon">✉️</div>
+          <h3>Mail Your Gift</h3>
+          <p>You can mail your check or money order to:</p>
+          <address class="mail-address">
+            <strong>{siteConfig.giving.mailInAddress.name}</strong><br>
+            {siteConfig.giving.mailInAddress.street}<br>
+            {siteConfig.giving.mailInAddress.city}, {siteConfig.giving.mailInAddress.state} {siteConfig.giving.mailInAddress.zip}
+          </address>
+        </div>
+
+        <!-- Auto-Draft / Recurring -->
+        <div class="traditional-card">
+          <div class="traditional-icon">🔄</div>
+          <h3>Recurring Giving</h3>
+          <p>
+            Set up automatic recurring gifts through most online platforms. Contact the 
+            church office for help setting up bank draft or automatic transfers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Section -->
+  <section class="section section-accent">
+    <div class="container-narrow">
+      <h2 class="text-center">Where Your Gifts Go</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      
+      <div class="impact-grid">
+        <div class="impact-item">
+          <div class="impact-icon">⛪</div>
+          <h4>Worship & Ministry</h4>
+          <p>Supporting weekly services, worship, and pastoral care</p>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-icon">👨‍👩‍👧‍👦</div>
+          <h4>Family Ministries</h4>
+          <p>Children's programs, youth ministry, and family events</p>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-icon">🤝</div>
+          <h4>Community Outreach</h4>
+          <p>Serving our local community and mission support</p>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-icon">🏠</div>
+          <h4>Facility & Operations</h4>
+          <p>Maintaining our building and resources</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container-narrow">
+      <h2 class="text-center">Giving FAQs</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h4>Is my online gift secure?</h4>
+          <p>
+            Yes! All of our online giving platforms use industry-standard encryption 
+            and security measures to protect your information.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Are my gifts tax-deductible?</h4>
+          <p>
+            Yes, as a registered 501(c)(3) organization, your gifts are tax-deductible 
+            to the full extent allowed by law. You'll receive an annual giving statement 
+            for your records.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Can I designate my gift for a specific purpose?</h4>
+          <p>
+            Yes! When giving online or by check, you can designate your gift for specific 
+            ministries or projects. Contact the church office if you have questions.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h4>How do I get my giving statement?</h4>
+          <p>
+            Annual giving statements are provided each January. If you need a statement 
+            at any other time, please contact the church office.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thank You -->
+  <section class="section section-dark" style="text-align: center;">
+    <div class="container-narrow">
+      <h2 style="color: var(--color-accent);">Thank You</h2>
+      <p style="color: var(--color-white); font-size: 1.2rem;">
+        Your faithful giving enables us to continue our mission of sharing the Gospel 
+        and serving our community. We're grateful for your partnership in ministry!
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: var(--color-white);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .page-header .lead {
+    color: var(--color-accent);
+    font-size: 1.3rem;
+  }
+
+  /* Giving Grid */
+  .giving-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .giving-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .giving-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .giving-card-header {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-md);
+    text-align: center;
+  }
+
+  .giving-card-header h3 {
+    margin: 0;
+    color: var(--color-white);
+  }
+
+  .giving-card-body {
+    padding: var(--spacing-md);
+  }
+
+  .giving-card-body p {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* QR Code Placeholder */
+  .qr-code-placeholder {
+    margin: var(--spacing-md) 0;
+    text-align: center;
+  }
+
+  .qr-placeholder-box {
+    background-color: var(--color-gray-light);
+    border: 2px dashed var(--color-gray);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+  }
+
+  .qr-placeholder-box span {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .qr-placeholder-box p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--color-gray-dark);
+  }
+
+  .qr-placeholder-box small {
+    display: block;
+    margin-top: var(--spacing-xs);
+    color: var(--color-gray-dark);
+    font-size: 0.8rem;
+  }
+
+  /* Payment Username */
+  .payment-username {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    margin: var(--spacing-md) 0;
+  }
+
+  .btn-block {
+    width: 100%;
+    display: block;
+  }
+
+  /* Traditional Giving */
+  .traditional-giving-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .traditional-card {
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+  }
+
+  .traditional-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .traditional-card h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .traditional-card p {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .mail-address {
+    background-color: var(--color-gray-light);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-style: normal;
+    color: var(--color-text);
+    margin-top: var(--spacing-sm);
+  }
+
+  /* Impact Section */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  .impact-item {
+    text-align: center;
+    padding: var(--spacing-md);
+  }
+
+  .impact-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .impact-item h4 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .impact-item p {
+    color: var(--color-text-light);
+    margin-bottom: 0;
+  }
+
+  /* FAQ Section */
+  .faq-list {
+    margin-top: var(--spacing-lg);
+  }
+
+  .faq-item {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .faq-item h4 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.1rem;
+  }
+
+  .faq-item p {
+    color: var(--color-text-light);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2rem;
+    }
+
+    .giving-grid,
+    .traditional-giving-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

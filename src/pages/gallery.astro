@@ -1,0 +1,356 @@
+---
+// Gallery Page - Auto-populates from /public/gallery folder
+import Layout from '../layouts/Layout.astro';
+import fs from 'fs';
+import { join } from 'path';
+
+// Get all images from the public/gallery directory
+let galleryImages = [];
+
+try {
+  const galleryPath = join(process.cwd(), 'public', 'gallery');
+  
+  // Check if gallery directory exists
+  if (fs.existsSync(galleryPath)) {
+    const files = fs.readdirSync(galleryPath);
+    
+    // Filter for image files only
+    galleryImages = files
+      .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
+      .map(file => ({
+        src: `/gallery/${file}`,
+        alt: file.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' '), // Use filename as alt text
+        filename: file
+      }));
+  }
+} catch (e) {
+  console.error('Error reading gallery directory:', e);
+}
+
+// If no images, create placeholder cards
+const hasImages = galleryImages.length > 0;
+---
+
+<Layout title="Photo Gallery" description="View photos from Caney Creek Cowboy Church">
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container text-center">
+      <h1>Photo Gallery</h1>
+      <p class="lead">Moments from Our Church Family</p>
+    </div>
+  </section>
+
+  <!-- Gallery Instructions (for admins) -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h2>Our Community in Pictures</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead">
+        Browse photos from our services, events, and community gatherings. 
+        These snapshots capture the heart of our church family.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="section section-light">
+    <div class="container">
+      {hasImages ? (
+        <div class="gallery-grid">
+          {galleryImages.map(image => (
+            <div class="gallery-item">
+              <img src={image.src} alt={image.alt} loading="lazy" />
+              <div class="gallery-overlay">
+                <span class="gallery-icon">🔍</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="placeholder-gallery">
+          <div class="gallery-placeholder">
+            <div class="placeholder-icon">📷</div>
+            <h3>Your Photos Will Appear Here</h3>
+            <p>
+              This gallery automatically displays images from the <code>/public/gallery</code> folder.
+            </p>
+            <div class="placeholder-instructions">
+              <h4>How to Add Photos:</h4>
+              <ol>
+                <li>Navigate to the <code>/public/gallery</code> folder</li>
+                <li>Add your image files (JPG, PNG, GIF, or WebP)</li>
+                <li>Save and rebuild the site</li>
+                <li>Photos will automatically appear here!</li>
+              </ol>
+              <p class="note">See HOW-TO-UPDATE.md for detailed instructions</p>
+            </div>
+          </div>
+
+          <!-- Placeholder Image Examples -->
+          <div class="placeholder-examples">
+            <h3 class="text-center mb-md">Gallery Preview (Placeholder Images)</h3>
+            <div class="gallery-grid">
+              <div class="gallery-item placeholder-item">
+                <div class="placeholder-image">
+                  <span>📸</span>
+                  <p>Worship Service</p>
+                </div>
+              </div>
+              <div class="gallery-item placeholder-item">
+                <div class="placeholder-image">
+                  <span>📸</span>
+                  <p>Community Event</p>
+                </div>
+              </div>
+              <div class="gallery-item placeholder-item">
+                <div class="placeholder-image">
+                  <span>📸</span>
+                  <p>Youth Group</p>
+                </div>
+              </div>
+              <div class="gallery-item placeholder-item">
+                <div class="placeholder-image">
+                  <span>📸</span>
+                  <p>Fellowship Meal</p>
+                </div>
+              </div>
+              <div class="gallery-item placeholder-item">
+                <div class="placeholder-image">
+                  <span>📸</span>
+                  <p>Outdoor Service</p>
+                </div>
+              </div>
+              <div class="gallery-item placeholder-item">
+                <div class="placeholder-image">
+                  <span>📸</span>
+                  <p>Rodeo Day</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Photo Submission Info -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h2>Share Your Photos</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead">
+        Have photos from a church event? We'd love to feature them in our gallery!
+      </p>
+      <p>
+        Contact us to submit your photos or learn how to become a gallery contributor.
+      </p>
+      <a href="/contact" class="btn btn-primary">Contact Us</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: var(--color-white);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .page-header .lead {
+    color: var(--color-accent);
+    font-size: 1.3rem;
+  }
+
+  /* Gallery Grid */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .gallery-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-icon {
+    font-size: 3rem;
+    color: var(--color-white);
+  }
+
+  /* Placeholder Gallery */
+  .placeholder-gallery {
+    text-align: center;
+  }
+
+  .gallery-placeholder {
+    background-color: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .placeholder-icon {
+    font-size: 5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .gallery-placeholder h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .gallery-placeholder code {
+    background-color: var(--color-gray-light);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-family: 'Courier New', monospace;
+    color: var(--color-primary);
+  }
+
+  .placeholder-instructions {
+    background-color: var(--color-gray-light);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-md);
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .placeholder-instructions h4 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+  }
+
+  .placeholder-instructions ol {
+    padding-left: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .placeholder-instructions li {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-light);
+  }
+
+  .note {
+    font-style: italic;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: var(--spacing-sm);
+    margin-bottom: 0;
+  }
+
+  /* Placeholder Examples */
+  .placeholder-examples {
+    margin-top: var(--spacing-xl);
+  }
+
+  .placeholder-item .placeholder-image {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-gray-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--color-gray);
+  }
+
+  .placeholder-image span {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-gray-dark);
+  }
+
+  .placeholder-image p {
+    margin: 0;
+    color: var(--color-gray-dark);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2rem;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--spacing-sm);
+    }
+
+    .gallery-placeholder {
+      padding: var(--spacing-md);
+    }
+
+    .placeholder-icon {
+      font-size: 3rem;
+    }
+  }
+</style>
+
+<script>
+  // Simple lightbox functionality (optional enhancement)
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      if (img) {
+        // Simple alert - you can enhance this with a proper lightbox modal
+        const alt = img.alt;
+        console.log('Clicked image:', alt);
+        // TODO: Add proper lightbox modal here if desired
+      }
+    });
+  });
+</script>
