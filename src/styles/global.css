@@ -1,40 +1,41 @@
 /* Global Styles for Caney Creek Cowboy Church */
+/* Modern, professional design with subtle western theme */
 
 /* CSS Variables - Easy to customize colors and fonts */
 :root {
-  /* Western Color Palette */
-  --color-primary: #8B4513; /* Saddle Brown */
-  --color-primary-dark: #654321;
-  --color-secondary: #D2691E; /* Burnt Sienna */
-  --color-accent: #DAA520; /* Goldenrod */
-  --color-text: #2C1810; /* Dark Brown */
-  --color-text-light: #5C4033;
-  --color-background: #FFF8F0; /* Cream */
+  /* Modern Color Palette - Professional with Western Touches */
+  --color-primary: #2C1810; /* Dark Brown - Professional */
+  --color-primary-dark: #1A0F0A;
+  --color-secondary: #8B4513; /* Saddle Brown */
+  --color-accent: #C9A961; /* Warm Gold */
+  --color-text: #2C2C2C; /* Almost Black */
+  --color-text-light: #666666;
+  --color-background: #FFFFFF; /* Clean White */
   --color-white: #FFFFFF;
-  --color-gray-light: #F5F5F5;
-  --color-gray: #CCCCCC;
-  --color-gray-dark: #666666;
+  --color-gray-light: #F8F8F8;
+  --color-gray: #E0E0E0;
+  --color-gray-dark: #808080;
 
-  /* Typography */
-  --font-heading: 'Georgia', 'Times New Roman', serif;
-  --font-body: 'Arial', 'Helvetica', sans-serif;
+  /* Typography - Modern, clean fonts */
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   
   /* Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 3rem;
-  --spacing-xl: 4rem;
+  --spacing-xl: 5rem;
 
-  /* Border Radius */
+  /* Border Radius - More modern */
   --radius-sm: 4px;
   --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-lg: 16px;
 
-  /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  /* Shadows - Softer, more professional */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* Reset and Base Styles */
@@ -52,50 +53,52 @@ body {
   font-family: var(--font-body);
   color: var(--color-text);
   background-color: var(--color-background);
-  line-height: 1.6;
+  line-height: 1.7;
   font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  line-height: 1.2;
+  line-height: 1.3;
   margin-bottom: var(--spacing-sm);
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3rem);
 }
 
 h2 {
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
 }
 
 h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
 }
 
 h4 {
   font-size: 1.25rem;
-  font-weight: 600;
 }
 
 p {
   margin-bottom: var(--spacing-sm);
+  line-height: 1.7;
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-secondary);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 a:hover {
-  color: var(--color-secondary);
+  color: var(--color-accent);
+  opacity: 0.9;
 }
 
 /* Container */
@@ -117,22 +120,22 @@ a:hover {
 }
 
 .section-dark {
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-primary);
   color: var(--color-white);
 }
 
 .section-light {
-  background-color: var(--color-white);
-}
-
-.section-accent {
   background-color: var(--color-gray-light);
 }
 
-/* Buttons */
+.section-accent {
+  background-color: var(--color-background);
+}
+
+/* Buttons - Modern, clean design */
 .btn {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 2rem;
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
@@ -142,54 +145,63 @@ a:hover {
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: var(--font-body);
+  letter-spacing: 0.02em;
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   color: var(--color-white);
-  border-color: var(--color-primary);
+  border-color: var(--color-secondary);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
   color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-accent {
   background-color: var(--color-accent);
-  color: var(--color-text);
+  color: var(--color-primary);
   border-color: var(--color-accent);
 }
 
 .btn-accent:hover {
-  background-color: #B8860B;
-  border-color: #B8860B;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-/* Cards */
+/* Cards - Modern, clean design */
 .card {
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
   padding: var(--spacing-md);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--color-gray);
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .card-title {
@@ -219,7 +231,7 @@ a:hover {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-/* Forms */
+/* Forms - Modern, clean design */
 .form-group {
   margin-bottom: var(--spacing-md);
 }
@@ -235,20 +247,21 @@ a:hover {
 .form-textarea,
 .form-select {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.875rem 1rem;
   font-size: 1rem;
   font-family: var(--font-body);
   border: 2px solid var(--color-gray);
   border-radius: var(--radius-md);
   background-color: var(--color-white);
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-input:focus,
 .form-textarea:focus,
 .form-select:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
 }
 
 .form-textarea {
@@ -256,10 +269,10 @@ a:hover {
   resize: vertical;
 }
 
-/* Western Decorative Elements */
+/* Western Decorative Elements - Subtle and modern */
 .western-divider {
   text-align: center;
-  margin: var(--spacing-lg) 0;
+  margin: var(--spacing-md) 0 var(--spacing-lg);
   position: relative;
 }
 
@@ -268,9 +281,9 @@ a:hover {
   content: '';
   position: absolute;
   top: 50%;
-  width: 40%;
-  height: 2px;
-  background-color: var(--color-accent);
+  width: calc(50% - 50px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gray), transparent);
 }
 
 .western-divider::before {
@@ -285,43 +298,31 @@ a:hover {
   display: inline-block;
   padding: 0 var(--spacing-sm);
   background-color: var(--color-background);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: var(--color-accent);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  h3 {
-    font-size: 1.25rem;
+  :root {
+    --spacing-xl: 3rem;
   }
 
   .section {
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-lg) 0;
   }
 
   .container,
   .container-narrow {
     padding: 0 var(--spacing-sm);
   }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 1.75rem;
-  }
-
-  h2 {
-    font-size: 1.25rem;
-  }
-
   .btn {
     width: 100%;
     padding: 1rem;
@@ -356,3 +357,17 @@ a:hover {
 .pb-sm { padding-bottom: var(--spacing-sm); }
 .pb-md { padding-bottom: var(--spacing-md); }
 .pb-lg { padding-bottom: var(--spacing-lg); }
+
+/* Lead text for introductions */
+.lead {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+
+/* Smooth transitions for interactive elements */
+button, a, .card {
+  -webkit-tap-highlight-color: transparent;
+}
+
