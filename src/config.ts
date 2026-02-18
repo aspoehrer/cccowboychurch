@@ -5,7 +5,7 @@
 export const siteConfig = {
   // Basic Site Information
   siteName: "Caney Creek Cowboy Church",
-  siteTagline: "Where Faith Meets the Frontier",
+  siteTagline: "Boots, Suit, Horses & Harleys. Come as you are, leave changed. Everyone welcome.",
   
   // Contact Information - EDIT THESE WITH YOUR CHURCH'S INFO
   contact: {
