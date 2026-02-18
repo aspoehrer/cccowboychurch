@@ -20,16 +20,100 @@ import Layout from '../layouts/Layout.astro';
         <span class="western-divider-icon">★</span>
       </div>
       <p class="lead text-center">
-        To share the Gospel of Jesus Christ with our community while embracing 
-        the values and lifestyle of the American West.
+        Our Mission at Caney Creek Cowboy Church is to declare &amp; demonstrate God's boundless Grace to a broken world.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container-narrow">
+      <h2 class="text-center">Our Purpose</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead text-center">
+        The focus and mission of Caney Creek Cowboy Church is to be led by the Holy Spirit to share the gospel of Jesus Christ, to train all in Biblical Truth and to have a community based in faith and fellowship.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pastor's Welcome -->
+  <section class="section">
+    <div class="container-narrow">
+      <h2 class="text-center">Pastor's Welcome</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <h3 class="text-center pastor-title">"Feeling like you've blown it?"</h3>
+      <p>
+        Reached the point of no return? That your life hasn't gone as planned? If so, you are not alone.
       </p>
       <p>
-        At Caney Creek Cowboy Church, we believe in keeping things simple and genuine. 
-        We're a place where ranchers, rodeo folks, and anyone who appreciates the 
-        cowboy way of life can worship together. Our mission is to create a welcoming 
-        environment where faith is strengthened, families are supported, and fellowship 
-        is genuine.
+        We all know what it feels like to have life disappoint us and not work out as we'd hoped. We all know what it's like to long for something different, something better, and something more.
       </p>
+      <p>
+        Drawing on his own experiences and pivotal Bible stories, Pastor Mark Grimes shows how God is all about comebacks. Samson had blown it repeatedly; nevertheless, he experiences tremendous triumph at the end of his life. The prodigal son, as Jesus describes him, returns home in disgrace only to be welcomed by his Father with open arms- no questions asked. The list goes on: Joseph, Moses, and Peter all experienced comebacks. Jesus himself performed the greatest comeback of all by rising from the dead. God is in the business of giving fresh starts to people. He gives hope to the hopeless. Direction to the directionless. Help to those who need help. God is always good, all the time, and His plans will always prevail, even when our plans don't. He already knows what the solutions are. No matter what kind of disappointment or grief or pain or trouble or heartache we encounter, God always offers a new beginning, a change of heart, and a powerful spiritual turnaround.
+      </p>
+      <p>
+        Please come as you are to Caney Creek Cowboy Church &amp; leave changed- we believe it's not so important how we start as it is to how we finish...
+      </p>
+      <p class="text-right pastor-signature">
+        <strong>Pastor Mark Grimes</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- Statement of Faith -->
+  <section class="section section-light">
+    <div class="container-narrow">
+      <h2 class="text-center">What We Believe</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <div class="statement-of-faith">
+        <p class="lead">
+          We believe the Holy Bible is the inspired word of God and is the basis of our statement of Faith. Caney Creek Cowboy Church is committed, as a body of believers in Jesus Christ, to share the good news of salvation to mankind.
+        </p>
+        <p>
+          We believe that God has commanded that no intimate sexual activity should be engaged in, outside of a marriage between a man and a woman. We believe that any form of homosexuality, lesbianism, bisexuality, transgenderism, bestiality, same sex marriage, incest, fornication, adultery, sexually oriented businesses and pornography are all sinful perversions of God's gift of sex. We believe that marriage should only be between a natural born male and a natural born female. As a statement of Faith, we will not allow any of the church's facilities to be used by any one or group that is in violation of our Faith and practice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story removed - replaced with above sections -->
+  <!--
+  <section class="section">
+    <div class="container-narrow">
+      <h2 class="text-center">Our Vision</h2>
+      <div class="western-divider">
+        <span class="western-divider-icon">★</span>
+      </div>
+      <p class="lead text-center">
+        Building a community where everyone feels at home, regardless of what they wear or where they come from.
+      </p>
+      <div class="vision-points">
+        <div class="vision-point">
+          <div class="vision-icon">🙏</div>
+          <h3>Biblical Teaching</h3>
+          <p>Grounded in Scripture, practical for everyday life</p>
+        </div>
+        <div class="vision-point">
+          <div class="vision-icon">👨‍👩‍👧‍👦</div>
+          <h3>Family Focused</h3>
+          <p>Supporting families through all stages of life</p>
+        </div>
+        <div class="vision-point">
+          <div class="vision-icon">🤝</div>
+          <h3>Community Driven</h3>
+          <p>Serving our neighbors and building relationships</p>
+        </div>
+        <div class="vision-point">
+          <div class="vision-icon">🌾</div>
+          <h3>Western Heritage</h3>
+          <p>Honoring the values and traditions of the West</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -173,6 +257,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+-->
 </Layout>
 
 <style>
@@ -295,6 +380,32 @@ import Layout from '../layouts/Layout.astro';
   .belief-item p {
     margin-bottom: 0;
     color: var(--color-text-light);
+  }
+
+  /* Pastor's Welcome */
+  .pastor-title {
+    color: var(--color-accent);
+    font-style: italic;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .pastor-signature {
+    font-style: italic;
+    margin-top: var(--spacing-md);
+  }
+
+  /* Statement of Faith */
+  .statement-of-faith {
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .statement-of-faith .lead {
+    text-align: left;
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
   }
 
   @media (max-width: 768px) {
